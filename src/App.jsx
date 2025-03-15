@@ -1,0 +1,143 @@
+import { useState, useRef } from "react";
+
+function App() {
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [school, setSchool] = useState("");
+  const [certificate, setCertificate] = useState("");
+  const [workExperiences, setWorkExperiences] = useState([""]);
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  const cvRef = useRef();
+
+  const addWorkExperience = () => {
+    setWorkExperiences([...workExperiences, ""]);
+  };
+
+  const handleWorkExperienceChange = (index, value) => {
+    const updatedExperiences = [...workExperiences];
+    updatedExperiences[index] = value;
+    setWorkExperiences(updatedExperiences);
+  };
+
+  const previewCV = () => {
+    import("html2canvas").then(({ default: html2canvas }) => {
+      html2canvas(cvRef.current).then(canvas => {
+        const imgData = canvas.toDataURL("image/png");
+        setPreviewUrl(imgData);
+      });
+    });
+  };
+
+  const generatePDF = () => {
+    import("html2canvas").then(({ default: html2canvas }) => {
+      html2canvas(cvRef.current).then(canvas => {
+        const imgData = canvas.toDataURL("image/png");
+        import("jspdf").then(({ jsPDF }) => {
+          const pdf = new jsPDF();
+          const imgProps = pdf.getImageProperties(imgData);
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+          pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+          pdf.save("cv.pdf");
+        });
+      });
+    });
+  };
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <div
+        ref={cvRef}
+        style={{
+          padding: "20px",
+          border: "1px solid #000",
+          marginBottom: "20px",
+          maxWidth: "600px"
+        }}
+      >
+        <h1>{name || "Your Name"}</h1>
+        <p><strong>Address:</strong> {address}</p>
+        <p><strong>Phone:</strong> {phone}</p>
+        <p><strong>School:</strong> {school}</p>
+        <p><strong>Certificate:</strong> {certificate}</p>
+        <div>
+          <h3>Work Experience</h3>
+          {workExperiences.map((exp, index) => (
+            <p key={index}>{exp}</p>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: "600px" }}>
+        <div>
+          <label>Name: </label>
+          <input 
+            value={name} 
+            onChange={e => setName(e.target.value)} 
+            style={{ width: "100%" }}
+          />
+        </div>
+        <div>
+          <label>Address: </label>
+          <input 
+            value={address} 
+            onChange={e => setAddress(e.target.value)} 
+            style={{ width: "100%" }}
+          />
+        </div>
+        <div>
+          <label>Phone: </label>
+          <input 
+            value={phone} 
+            onChange={e => setPhone(e.target.value)} 
+            style={{ width: "100%" }}
+          />
+        </div>
+        <div>
+          <label>School: </label>
+          <input 
+            value={school} 
+            onChange={e => setSchool(e.target.value)} 
+            style={{ width: "100%" }}
+          />
+        </div>
+        <div>
+          <label>Certificate: </label>
+          <input 
+            value={certificate} 
+            onChange={e => setCertificate(e.target.value)} 
+            style={{ width: "100%" }}
+          />
+        </div>
+        <div>
+          <h3>Work Experience</h3>
+          {workExperiences.map((exp, index) => (
+            <input
+              key={index}
+              value={exp}
+              onChange={e => handleWorkExperienceChange(index, e.target.value)}
+              placeholder={`Work Experience ${index + 1}`}
+              style={{ width: "100%", marginBottom: "5px" }}
+            />
+          ))}
+          <button onClick={addWorkExperience}>Add Work Experience</button>
+        </div>
+        <br />
+        <button onClick={previewCV} style={{ marginRight: "10px" }}>
+          Preview CV
+        </button>
+        <button onClick={generatePDF}>Download as PDF</button>
+        {previewUrl && (
+          <div style={{ marginTop: "20px" }}>
+            <h3>CV Preview:</h3>
+            <img src={previewUrl} alt="CV Preview" style={{ maxWidth: "100%" }} />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default App;
