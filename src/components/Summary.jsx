@@ -1,11 +1,22 @@
 import { useState } from "react";
-function Summary(){
+
+function Summary({ onChange }) {
     const [summary, setSummary] = useState("");
+    const handleSummaryChange = (e) => {
+        const updatedSummary = e.target.value;
+        setSummary(updatedSummary);
+        onChange(updatedSummary);
+    }
     return(
-        <div className="summary">
-            <h1>Summary</h1>
-            <textarea value={summary} onChange={e => setSummary(e.target.value)} placeholder="Enter a summary about yourself..."></textarea>
+        <div className="summary-container">
+            <h2>About Me</h2>
+            <textarea
+            value={summary} 
+            onChange={handleSummaryChange} 
+            placeholder="Enter a summary about yourself..."
+            /> 
         </div>
     )
 }
+
 export default Summary;

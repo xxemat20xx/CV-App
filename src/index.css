@@ -2,17 +2,38 @@ body{
   margin: 0;
   padding: 0;
   background-color: antiquewhite;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.App{
+.cv-form{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 700px;
-  min-width: 600px;
+  width: 595px;
+  
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: white;
+}
+.personal-info input, 
+.education-container input,
+.experience-container input{
+  border: none;
+  outline: none;
+  padding: 8px;
+}
+.personal-info input:nth-child(1),
+.education-container input:nth-child(2),
+.experience-container input:nth-child(2){
+    width: 98%;
+    font-size: 1.8rem;
+}
+.summary-container textarea{
+  resize: none;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px;
+  height: 120px;
 }
