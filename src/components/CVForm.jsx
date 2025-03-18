@@ -32,6 +32,8 @@ function CVForm(){
         setSkills(skill)
     }
     return(
+        <>
+        
     <div className="cv-form">
         <PersonalInfo onChange={handlePersonalInfoChange} />
         <Summary onChange={handleSummaryChange} />
@@ -39,6 +41,12 @@ function CVForm(){
         <Experience onChange={handleExperienceChange}/>
         <Skill onChange={handleExperienceChange} />
     </div>  
+        <div className="buttons-container">
+        <button className="btn">Preview</button>
+        <button className="btn">Download as PDF</button>
+    </div>
+    
+    </>
     )
 }
 export default CVForm;
