@@ -1,49 +1,51 @@
-import { useState } from "react";
-function PersonalInfo({onChange}){
-    const [name, setName] = useState("");
-    const [age, setAge] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
+import React from "react";
 
-    const handleOnChange = () => {
-        const personalDetails = {
-            name: name,
-            age: age,
-            email: email,
-            phone: phone,
-        };
-        onChange(personalDetails);
-    }
-    return(
-        <div className="personal-info">
-            <input type="text" 
-            value={name} 
-            onChange={e =>{setName(e.target.value);
-            handleOnChange();
-            }}
-            placeholder="Enter your name" />
+export default function PersonalDetails({ personalInfo, onChange }) {
+  const handleOnChange = (event) => {
+    const { name, value } = event.target;
+    onChange({
+      ...personalInfo,
+      [name]: value,
+    });
+  };
 
-            <input type="number" 
-            value={age} 
-            onChange={e =>{setAge(e.target.value);
-            handleOnChange();
-            }}
-            placeholder="Enter your age" />
-            <input type="text" 
-            value={email} 
-            onChange={e =>{setEmail(e.target.value);
-            handleOnChange();
-            }}
-            placeholder="Enter your email" />
-            <input type="text" 
-            value={phone} 
-            onChange={e =>{setPhone(e.target.value);
-            handleOnChange();
-            }}
-            placeholder="Enter your phone number" />
+  return (
+    <div className="personal-info">
+      <input
+        type="text"
+        name="name"
+        value={personalInfo.name}
+        onChange={handleOnChange}
+        placeholder="Enter Name"
+      />
+      <input
+        type="number"
+        name="age"
+        value={personalInfo.age}
+        onChange={handleOnChange}
+        placeholder="Enter Age"
+      />
+      <input type="text" 
+      name="address"
+      value={personalInfo.address}
+      onChange={handleOnChange}
+      placeholder="Enter your address"
+      />
 
-        </div>
-    )
-
+      <input
+        type="email"
+        name="email"
+        value={personalInfo.email}
+        onChange={handleOnChange}
+        placeholder="Enter Email"
+      />
+      <input
+        type="text"
+        name="contact"
+        value={personalInfo.contact}
+        onChange={handleOnChange}
+        placeholder="Enter Contact Number"
+      />
+    </div>
+  );
 }
-export default PersonalInfo;
