@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function PersonalDetails({ personalInfo, onChange }) {
   const handleOnChange = (event) => {
     const { name, value } = event.target;
@@ -8,7 +6,7 @@ export default function PersonalDetails({ personalInfo, onChange }) {
       [name]: value,
     });
   };
-
+  
   return (
     <div className="personal-info">
       <input
