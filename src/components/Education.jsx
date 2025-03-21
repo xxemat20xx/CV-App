@@ -1,5 +1,4 @@
 import React from 'react'
-
 export default function Education({educationInfo, onChange}) {
     const handleEducationChange = (index, event) =>{
    
@@ -28,6 +27,7 @@ export default function Education({educationInfo, onChange}) {
       };
     return (
         <div className='education-container'>
+            <h2>School</h2>
             {educationInfo.map((educationInfo, index) => (
                 <div key={index} className="education-entry">
                     <input
@@ -63,10 +63,10 @@ export default function Education({educationInfo, onChange}) {
                         value={educationInfo.endYear}
                         onChange={(e) => handleEducationChange(index, e)}
                     />
-                    <button onClick={() => handleRemoveEducationBtn(index)}>Remove</button>
+                    <button onClick={() => handleRemoveEducationBtn(index)}>&#10006;</button>
                 </div>
             ))}
-            <button onClick={handleAddSchoolBtn}>Add School</button>
+            <button onClick={handleAddSchoolBtn}>&#10010; School</button>
         </div>
     );
 }

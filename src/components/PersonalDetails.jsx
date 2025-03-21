@@ -1,3 +1,4 @@
+import 'boxicons'
 export default function PersonalDetails({ personalInfo, onChange }) {
   const handleOnChange = (event) => {
     const { name, value } = event.target;
@@ -19,13 +20,17 @@ export default function PersonalDetails({ personalInfo, onChange }) {
         />
       </div>
       <div className="other-personal-info">
+      <div className="input-content">
+      <box-icon type='solid' name='location-plus'></box-icon>
       <input type="text" 
       name="address"
       value={personalInfo.address}
       onChange={handleOnChange}
       placeholder="Enter your address"
       />
-
+      </div>
+      <div className="input-content">
+      <box-icon name='envelope' type='solid' color='#f18e8e' ></box-icon>
       <input
         type="email"
         name="email"
@@ -33,6 +38,9 @@ export default function PersonalDetails({ personalInfo, onChange }) {
         onChange={handleOnChange}
         placeholder="Enter Email"
       />
+      </div>
+      <div className="input-content">
+      <box-icon name='phone-call' type='solid' ></box-icon>
       <input
         type="text"
         name="contact"
@@ -40,6 +48,7 @@ export default function PersonalDetails({ personalInfo, onChange }) {
         onChange={handleOnChange}
         placeholder="Enter Contact Number"
       />
+      </div>
       </div>
     </div>
   );

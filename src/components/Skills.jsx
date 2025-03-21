@@ -25,7 +25,7 @@ export default function Skills({value, onChange}) {
                 <button onClick={() => handleRemoveSkill(index)}>Remove</button>
             </div>
         ))}
-        <button onClick={handleAddSkillBtn}>Add Skill</button>
+        <button onClick={handleAddSkillBtn}>&#10010; Skill</button>
     </div>
   )
 }

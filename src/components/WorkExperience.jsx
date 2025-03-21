@@ -22,6 +22,7 @@ export default function WorkExperience({workExpInfo, onChange}) {
   };
   return (
     <div className='experience-container'>
+      <h2>Work Experience</h2>
         {workExpInfo.map((workExpInfo, index) => (
             <div key={index}>
                 <input type="text" 
@@ -53,10 +54,10 @@ export default function WorkExperience({workExpInfo, onChange}) {
                 onChange={(e) => handleWorkExpChange(index, e)}
                 placeholder="Your job responsibility.."
                 />
-                 <button onClick={() => handleRemoveExperienceBtn(index)}>Remove</button>
+                 <button onClick={() => handleRemoveExperienceBtn(index)}>&#10006;</button>
             </div>
         ))}
-        <button onClick={handleAddExperienceBtn}>Add Experience</button>
+        <button onClick={handleAddExperienceBtn}>&#10010; Experience</button>
     </div>
   )
 }

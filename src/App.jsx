@@ -7,7 +7,7 @@ import Skills from './components/Skills';
 function App() {
   // Handle Personal Info state
   const [personalInfo, setPersonalInfo] = useState({
-    name: "John Dave Doe",
+    name: "Johny Jon Doe Jr. ",
     address: "Manila, Philippines",
     email: "johndavedoe@gmail.com",
     contact: "09091234569",
