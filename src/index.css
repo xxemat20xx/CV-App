@@ -1,7 +1,7 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: antiquewhite;
+  background-color: #333;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .cv-form{
@@ -9,31 +9,56 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 595px;
+  background-color: #fff;
+  padding: 1em;
+  /* width: 595px; */
   
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: white;
 }
-.personal-info input, 
-.education-container input,
-.experience-container input{
-  border: none;
-  outline: none;
-  padding: 8px;
+.container{
+  display: flex;
+  justify-content: space-between;
 }
-.personal-info input:nth-child(1),
-.education-container input:nth-child(2),
-.experience-container input:nth-child(2){
-    width: 98%;
-    font-size: 1.8rem;
+.personal-info .name-content{
+ 
+  padding: 3em 0;
+}
+.personal-info .name-content textarea{
+  width: 80%;
+  resize: none;
+  min-height: 70px;
+  max-height: 150px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 3.8rem;
+  font-weight: bolder;
+
+}
+.other-personal-info{
+  display: flex;
+}
+.summary-container{
+
+  margin: 2em 0;
+
 }
 .summary-container textarea{
-  resize: none;
-  width: 100%;
+  width: 90%;
+  min-height: 180px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+input{
   border: none;
   outline: none;
-  padding: 8px;
-  height: 120px;
+}
+textarea{
+  resize: none;
+  border: none;
+  overflow: none;
+  outline: none;
 }

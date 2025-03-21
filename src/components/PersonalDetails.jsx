@@ -9,20 +9,16 @@ export default function PersonalDetails({ personalInfo, onChange }) {
   
   return (
     <div className="personal-info">
-      <input
-        type="text"
-        name="name"
-        value={personalInfo.name}
-        onChange={handleOnChange}
-        placeholder="Enter Name"
-      />
-      <input
-        type="number"
-        name="age"
-        value={personalInfo.age}
-        onChange={handleOnChange}
-        placeholder="Enter Age"
-      />
+      
+      <div className="name-content">
+        <textarea 
+          name="name"
+          value={personalInfo.name}
+          onChange={handleOnChange}
+          placeholder="Enter your name"
+        />
+      </div>
+      <div className="other-personal-info">
       <input type="text" 
       name="address"
       value={personalInfo.address}
@@ -44,6 +40,7 @@ export default function PersonalDetails({ personalInfo, onChange }) {
         onChange={handleOnChange}
         placeholder="Enter Contact Number"
       />
+      </div>
     </div>
   );
 }

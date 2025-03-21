@@ -16,6 +16,10 @@ export default function WorkExperience({workExpInfo, onChange}) {
         {position: "", workplace: "", startYear: "", endYear: "", jobDescription: ""}
     ]);
   };
+  const handleRemoveExperienceBtn = (index) => {
+    const updatedWorkExp = workExpInfo.filter((_, i) => i !== index);
+    onChange(updatedWorkExp);
+  };
   return (
     <div className='experience-container'>
         {workExpInfo.map((workExpInfo, index) => (
@@ -49,6 +53,7 @@ export default function WorkExperience({workExpInfo, onChange}) {
                 onChange={(e) => handleWorkExpChange(index, e)}
                 placeholder="Your job responsibility.."
                 />
+                 <button onClick={() => handleRemoveExperienceBtn(index)}>Remove</button>
             </div>
         ))}
         <button onClick={handleAddExperienceBtn}>Add Experience</button>

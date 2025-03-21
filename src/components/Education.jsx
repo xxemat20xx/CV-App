@@ -22,6 +22,10 @@ export default function Education({educationInfo, onChange}) {
             }
         ]);
     }
+    const handleRemoveEducationBtn = (index) => {
+        const updatedEducation = educationInfo.filter((_, i) => i !== index);
+        onChange(updatedEducation);
+      };
     return (
         <div className='education-container'>
             {educationInfo.map((educationInfo, index) => (
@@ -59,6 +63,7 @@ export default function Education({educationInfo, onChange}) {
                         value={educationInfo.endYear}
                         onChange={(e) => handleEducationChange(index, e)}
                     />
+                    <button onClick={() => handleRemoveEducationBtn(index)}>Remove</button>
                 </div>
             ))}
             <button onClick={handleAddSchoolBtn}>Add School</button>
