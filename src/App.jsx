@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { use, useState } from 'react';
 import Summary from './components/Summary';
 import Education from './components/Education';
 import PersonalDetails from './components/PersonalDetails'
 import WorkExperience from './components/WorkExperience';
 import Skills from './components/Skills';
+import PreviewCV from './components/PreviewCV';
+import boxicons from 'boxicons';
 function App() {
   // Handle Personal Info state
   const [personalInfo, setPersonalInfo] = useState({
@@ -24,10 +26,10 @@ function App() {
   // Handle education
   const [educationInfo, setEducationInfo] = useState([
     {
-    school: "",
-    degree: "",
-    startYear: "",
-    endYear: "",
+    school: "Manila University",
+    degree: "Information Tech.",
+    startYear: "2021-03-03",
+    endYear: "2025-03-03",
     }
     ]);
     const handleEducationChange = (updatedEducation) => {
@@ -35,29 +37,105 @@ function App() {
     }
     // Handle Work Experience
     const [workExpInfo, setWorkExpInfo] = useState([
-      {position: "", workplace: "", startYear: "", endYear: "", jobDescription: ""}
+      {position: "Web Developer", workplace: "Manila Data Corp.", startYear: "2021-05-05", endYear: "2025-06-06", jobDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum architecto autem quas ipsa voluptas aperiam quis blanditiis enim. Mollitia nesciunt praesentium recusandae corporis est? Veritatis necessitatibus labore eos asperiores a."}
       ]);
     const handleWorkExpChange = (updatedWork) => {
       setWorkExpInfo(updatedWork);
     }
     //handle skill 
     const [skill, setSkill] = useState([]);
+
+    //const handlePreview
+    const [isPreviewOpen, setIsPreviewOpen] = useState(false)
+    const previewCV = () => {
+      setIsPreviewOpen(true);
+    }
   return (
-    <div className='cv-form'> 
-      <div className='container'>
-      <div className="sidepanel-content">
-      <PersonalDetails personalInfo={personalInfo} onChange={handlePersonalInfoChange} />
-      <Summary value={summary} onChange={setSummary} />
-      </div>
-      
-      <div className='rightpanel-content'>
-      <Education educationInfo={educationInfo} onChange={handleEducationChange}/>
-      <WorkExperience workExpInfo={workExpInfo} onChange={handleWorkExpChange}/>
-      <Skills value={skill} onChange={setSkill}/>
-      </div>
-      </div>
+    <>
+      <div className='cv-form'> 
+            <div className='container'>
+            <div className="sidepanel-content">
+            <PersonalDetails personalInfo={personalInfo} onChange={handlePersonalInfoChange} />
+            <Summary value={summary} onChange={setSummary} />
+            </div>
+            
+            <div className='rightpanel-content'>
+            <Education educationInfo={educationInfo} onChange={handleEducationChange}/>
+            <WorkExperience workExpInfo={workExpInfo} onChange={handleWorkExpChange}/>
+            <Skills value={skill} onChange={setSkill}/>
+            <button onClick={previewCV}>Preview</button>
+            </div>
+            </div>
+          {isPreviewOpen && (
+            <PreviewCV onClose={() => setIsPreviewOpen(false)}>
+                <div className="container">
+                    <div className="sidepanel-content">
+                        <div className="personal-info">
+                        <h1 id='personalInfo-name'>{personalInfo.name}</h1>
+                        <div className="underline"></div>
+                        <div className="other-personal-info">
+                            <div className="input-content">
+                            <box-icon type='solid' name='location-plus' color='#3F7D58'></box-icon>
+                            <span>{personalInfo.address}</span>
+                            </div>
+                            <div className="input-content">
+                            <box-icon name='envelope' type='solid' color='#3F7D58' ></box-icon>
+                            <span>{personalInfo.email}</span>
+                            </div>
+                            <div className="input-content">
+                            <box-icon name='phone-call' type='solid' color='#3F7D58'></box-icon>
+                            <span>{personalInfo.contact}</span>
+                            </div>
+                        </div>
+                        </div>
+                        <div className="summary-container">
+                        <h2>About Me</h2>
+                        <div className="underline"></div>
+                        <p>{summary}</p>
+                    </div>
+                    </div>
+
+                    <div className="rightpanel-content">
+                        <h2>Education</h2>
+                        <div className="underline"></div>
+                        {educationInfo.map((edu,index) => (
+                          <div key={index} className='education-container'>
+                              <div>
+                                  <p id='degree'>{edu.degree}</p>
+                                  <p>{edu.school}</p>
+                                  <h4>Start Year:</h4>
+                                  <p>{edu.startYear}</p>
+                                  <h4>End Year:</h4>
+                                  <p>{edu.endYear}</p>
+                              </div>
+                          </div>
+                        ))}
+                  
+                        {workExpInfo.map((workExp, index) => (
+                         
+                          <div key={index} className='experience-container'>
+                                  <h2>Work Experience</h2>
+                                  <div className="underline"></div>
+                                <p id='jobPosition'>{workExp.position}</p>
+                                <p>{workExp.workplace}</p>
+                                <h4>Start Date:</h4>
+                                <p>{workExp.startYear}</p>
+                                <h4>End Date:</h4>
+                                <p>{workExp.endYear}</p>
+                                <h4>Job Description</h4>
+                                <p>{workExp.jobDescription}</p>
+                          </div>
+                        ))}
+                    </div>
+                </div>
+               
+            </PreviewCV>
+          )}
     </div>
+
+    </>
   )
 }
+
 
 export default App

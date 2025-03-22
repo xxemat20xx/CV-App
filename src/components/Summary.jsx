@@ -4,6 +4,7 @@ export default function Summary({value, onChange}) {
   return (
     <div className='summary-container'>
         <h2>About me</h2>
+        <div className="underline"></div>
         <textarea 
             placeholder='Write something about yourself...'
             value={value}

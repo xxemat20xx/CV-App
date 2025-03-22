@@ -19,9 +19,10 @@ export default function PersonalDetails({ personalInfo, onChange }) {
           placeholder="Enter your name"
         />
       </div>
+      <div className="underline"></div>
       <div className="other-personal-info">
       <div className="input-content">
-      <box-icon type='solid' name='location-plus'></box-icon>
+      <box-icon type='solid' name='location-plus' color='#3F7D58'></box-icon>
       <input type="text" 
       name="address"
       value={personalInfo.address}
@@ -30,7 +31,7 @@ export default function PersonalDetails({ personalInfo, onChange }) {
       />
       </div>
       <div className="input-content">
-      <box-icon name='envelope' type='solid' color='#f18e8e' ></box-icon>
+      <box-icon name='envelope' type='solid' color='#3F7D58' ></box-icon>
       <input
         type="email"
         name="email"
@@ -40,7 +41,7 @@ export default function PersonalDetails({ personalInfo, onChange }) {
       />
       </div>
       <div className="input-content">
-      <box-icon name='phone-call' type='solid' ></box-icon>
+      <box-icon name='phone-call' type='solid' color='#3F7D58'></box-icon>
       <input
         type="text"
         name="contact"

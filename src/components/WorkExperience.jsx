@@ -23,8 +23,9 @@ export default function WorkExperience({workExpInfo, onChange}) {
   return (
     <div className='experience-container'>
       <h2>Work Experience</h2>
+      <div className="underline"></div>
         {workExpInfo.map((workExpInfo, index) => (
-            <div key={index}>
+            <div key={index} className="experience-entry">
                 <input type="text" 
                 name= "position"
                 value={workExpInfo.position}
@@ -37,14 +38,18 @@ export default function WorkExperience({workExpInfo, onChange}) {
                 onChange={(e) => handleWorkExpChange(index, e)}
                 placeholder='Company Inc.'/>
 
-                <input type="date" 
+                <label htmlFor={`startYear-${index}`}>Start Date:</label>
+                <input type="date"
+                 id={`startYear-${index}`}
                 name= "startYear"
                 value={workExpInfo.startYear}
                 onChange={(e) => handleWorkExpChange(index, e)}
                 />
 
+                <label htmlFor={`endYear-${index}`}>Start Date:</label>
                 <input type="date" 
                 name= "endYear"
+                id={`endYear-${index}`}
                 value={workExpInfo.endYear}
                 onChange={(e) => handleWorkExpChange(index, e)}
                 />
@@ -52,9 +57,12 @@ export default function WorkExperience({workExpInfo, onChange}) {
                 name="jobDescription"
                 value={workExpInfo.jobDescription}
                 onChange={(e) => handleWorkExpChange(index, e)}
-                placeholder="Your job responsibility.."
+                placeholder="Job Description.."
                 />
-                 <button onClick={() => handleRemoveExperienceBtn(index)}>&#10006;</button>
+                  <div className="experience-buttons">
+                  <button onClick={() => handleRemoveExperienceBtn(index)}>&#10006;</button>
+                  </div>
+
             </div>
         ))}
         <button onClick={handleAddExperienceBtn}>&#10010; Experience</button>

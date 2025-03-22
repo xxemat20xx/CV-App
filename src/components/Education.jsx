@@ -28,6 +28,7 @@ export default function Education({educationInfo, onChange}) {
     return (
         <div className='education-container'>
             <h2>School</h2>
+            <div className="underline"></div>
             {educationInfo.map((educationInfo, index) => (
                 <div key={index} className="education-entry">
                     <input
@@ -63,10 +64,16 @@ export default function Education({educationInfo, onChange}) {
                         value={educationInfo.endYear}
                         onChange={(e) => handleEducationChange(index, e)}
                     />
+                    <div className="educations-buttons">
                     <button onClick={() => handleRemoveEducationBtn(index)}>&#10006;</button>
+                    </div>
+                    
                 </div>
             ))}
-            <button onClick={handleAddSchoolBtn}>&#10010; School</button>
+                <div className="educations-buttons">
+                <button onClick={handleAddSchoolBtn}>&#10010; School</button>
+                </div>
+        
         </div>
     );
 }

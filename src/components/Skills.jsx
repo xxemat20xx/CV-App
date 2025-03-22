@@ -16,6 +16,7 @@ export default function Skills({value, onChange}) {
   return (
     <div className='skills-container'>
         <h2>Skills</h2>
+        <div className="underline"></div>
         {value.map((skill, index) => (
             <div key={index}>
                 <input type="text" 
