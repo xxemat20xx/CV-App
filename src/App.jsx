@@ -57,10 +57,15 @@ function App() {
         <div className="container">
             <PersonalDetails personalInfo={personalInfo} onChange={handlePersonalInfoChange} />
             <div className="bottom-content">
-            <Summary />
-            <WorkExperience workExpInfo={workExpInfo} onChange={handleWorkExpChange}/>
-            <Education educationInfo={educationInfo} onChange={handleEducationChange}/>
-            <Skills value={skill} onChange={setSkill}/>
+                <div className="left-panel">
+                <Summary />
+                <Education educationInfo={educationInfo} onChange={handleEducationChange}/>
+                <Skills value={skill} onChange={setSkill}/>
+                </div>
+                <div className="right-panel">
+                <WorkExperience workExpInfo={workExpInfo} onChange={handleWorkExpChange}/>
+             
+                </div>
          
             </div>
         </div>

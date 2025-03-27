@@ -29,7 +29,7 @@ export default function WorkExperience({workExpInfo, onChange}) {
         {workExpInfo.map((workExpInfo, index) => (
            
             <div key={index} className="experience-entry">
-               <div className="design-content">
+            <div className="design-content">
             <div className='design diamond'></div>
             <div className='design line'></div>
             </div>
