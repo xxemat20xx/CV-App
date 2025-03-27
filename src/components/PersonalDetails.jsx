@@ -1,4 +1,5 @@
 import 'boxicons'
+import styles from '../modules/personalContainer.module.css'
 export default function PersonalDetails({ personalInfo, onChange }) {
   const handleOnChange = (event) => {
     const { name, value } = event.target;
@@ -9,48 +10,47 @@ export default function PersonalDetails({ personalInfo, onChange }) {
   };
   
   return (
-    <div className="personal-info">
-      
-      <div className="name-content">
-        <textarea 
-          name="name"
-          value={personalInfo.name}
-          onChange={handleOnChange}
-          placeholder="Enter your name"
-        />
-      </div>
-      <div className="underline"></div>
-      <div className="other-personal-info">
-      <div className="input-content">
-      <box-icon type='solid' name='location-plus' color='#3F7D58'></box-icon>
-      <input type="text" 
-      name="address"
-      value={personalInfo.address}
-      onChange={handleOnChange}
-      placeholder="Enter your address"
-      />
-      </div>
-      <div className="input-content">
-      <box-icon name='envelope' type='solid' color='#3F7D58' ></box-icon>
-      <input
-        type="email"
-        name="email"
-        value={personalInfo.email}
-        onChange={handleOnChange}
-        placeholder="Enter Email"
-      />
-      </div>
-      <div className="input-content">
-      <box-icon name='phone-call' type='solid' color='#3F7D58'></box-icon>
-      <input
-        type="text"
-        name="contact"
-        value={personalInfo.contact}
-        onChange={handleOnChange}
-        placeholder="Enter Contact Number"
-      />
-      </div>
-      </div>
-    </div>
+    <section className={styles.personal_container}>
+       
+        <div className={styles.name_jobTitle}>
+            <div className={styles.name_jobTitle_content}>
+
+                  
+                  <textarea 
+                      name='name'
+                      value={personalInfo.name}
+                      onChange={handleOnChange}
+                  />
+                  <input type="text" 
+                          name='jobTitle'
+                          value={personalInfo.jobTitle}
+                          onChange={handleOnChange}
+                          placeholder='Enter your job title'/>
+            </div>
+            </div>
+            <div className={styles.contact_container}>
+                  <box-icon type='solid' name='location-plus' color="#14FFEC"></box-icon>
+                  <input type="text" 
+                          name='address'
+                          value={personalInfo.address}
+                          onChange={handleOnChange}
+                          placeholder='Enter your address'/>
+
+                  <box-icon type='solid' name='envelope' color="#14FFEC"></box-icon>
+                  <input type="text" 
+                          name='email'
+                          value={personalInfo.email}
+                          onChange={handleOnChange}
+                          placeholder='Enter your email'/>
+
+                  <box-icon type='solid' name='phone' color="#14FFEC"></box-icon>
+                  <input type="text" 
+                          name='phone'
+                          value={personalInfo.phone}
+                          onChange={handleOnChange}
+                          placeholder='Enter your phone'/>
+            </div>
+    
+    </section>
   );
 }

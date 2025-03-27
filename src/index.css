@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
-  --orange: #EC5228;
-  --light-orange: #EF9651;
+  --grey:  #323232;
   --white: #EFEFEF;
-  --green: #3F7D58;
-  --black: #2A3335;
+  --green: #0D7377;
+  --skyblue: #14FFEC;
+  --black: #212121;
 }
 *{
   font-family: "Montserrat", sans-serif;
@@ -14,117 +14,31 @@
   color: var(--black);
 }
 body{
-  background-color: var(--black);
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
- 
 }
-button{
-  cursor: pointer;
+.bottom-content{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
 }
-.underline{
-  width: 60px;
-  height: 4px;
-  background-color: var(--orange);
-  margin: 1em 0;
-}
-box-icon{
-  margin-right: 10px;
-}
-.cv-form{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--white);
-  padding: 2em;
-  min-width: 595px;
-  min-height: 842px;
-}
-.container{
+.design-content{
   display: flex;
-  gap: 20px;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 12px;
 }
-.sidepanel-content,
-.rightpanel-content{
-  width: 300px;
-  padding: 1em;
+.design.line{
+  height: 90px;
+  width: 2px;
+  background-color: var(--black);
 }
-/* PERSONAL DETAILS CSS */
-.personal-info .name-content textarea{
-  width: 100%;
-  min-height: 160px;
-  max-height: 450px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  font-size: 3rem;
-  font-weight: 900;
-  overflow: hidden;
-  color: var(--green);
-  background-color: transparent;
+.design.diamond{
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  background-color: var(--green);
 }
-#personalInfo-name{
-  color: var(--green);
-  font-weight: 800;
-  font-size: 3.4rem;
-}
-.other-personal-info input{
-  width: 80%;
-}
-/* ABOUT ME CSS */
-.summary-container textarea{
-  width: 100%;
-  min-height: 220px;
-  max-height: 450px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  font-size: 1em;
-  
- 
-}
-/* EDUCATION CSS */
-.education-container{
-  width: 100%;
-
-}
-#degree,
-#jobPosition{
-  font-weight: 800;
-  font-size: 18px;
-  color: var(--green);
-}
-.education-entry,
 .experience-entry{
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.education-entry label,
-.experience-container label{
-  font-size: 14px;
-  font-weight: 800;
-}
-/* PREVIEW CSS */
-.preview-overlay{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-input, textarea{ /* reset */
-  border: none;
-  outline: none;
-  resize: none;
-  /* background-color: var(--white); */
 }

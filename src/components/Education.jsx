@@ -1,4 +1,5 @@
 import React from 'react'
+
 export default function Education({educationInfo, onChange}) {
     const handleEducationChange = (index, event) =>{
    
@@ -26,11 +27,16 @@ export default function Education({educationInfo, onChange}) {
         onChange(updatedEducation);
       };
     return (
-        <div className='education-container'>
+        <div className="">
             <h2>School</h2>
-            <div className="underline"></div>
+            <div></div>
             {educationInfo.map((educationInfo, index) => (
-                <div key={index} className="education-entry">
+                <div key={index} className="">
+                    <div className="">
+                        <button className="" onClick={() => handleRemoveEducationBtn(index)}>&#10006;</button>
+                    </div>     
+                    
+                    <div className="school_degree">
                     <input
                         type="text"
                         name="school"
@@ -47,7 +53,9 @@ export default function Education({educationInfo, onChange}) {
                         placeholder="Degree"
                     />
 
-                    <label htmlFor={`startYear-${index}`}>Start Date:</label>
+                    </div>
+                    
+                    <label htmlFor={`startYear-${index}`}>Start:</label>
                     <input
                         type="date"
                         id={`startYear-${index}`}
@@ -56,7 +64,7 @@ export default function Education({educationInfo, onChange}) {
                         onChange={(e) => handleEducationChange(index, e)}
                     />
 
-                    <label htmlFor={`endYear-${index}`}>End Year:</label>
+                    <label htmlFor={`endYear-${index}`}>End:</label>
                     <input
                         type="date"
                         id={`endYear-${index}`}
@@ -64,13 +72,9 @@ export default function Education({educationInfo, onChange}) {
                         value={educationInfo.endYear}
                         onChange={(e) => handleEducationChange(index, e)}
                     />
-                    <div className="educations-buttons">
-                    <button onClick={() => handleRemoveEducationBtn(index)}>&#10006;</button>
-                    </div>
-                    
                 </div>
             ))}
-                <div className="educations-buttons">
+                <div className="">
                 <button onClick={handleAddSchoolBtn}>&#10010; School</button>
                 </div>
         

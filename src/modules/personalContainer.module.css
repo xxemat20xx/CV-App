@@ -1,0 +1,44 @@
+:root{
+    --grey:  #323232;
+    --white: #EFEFEF;
+    --green: #0D7377;
+    --skyblue: #14FFEC;
+    --black: #212121;
+  }
+.personal_container{
+   background-color: var(--black);
+    padding: 1.5em;
+    position: relative;
+}
+.name_jobTitle_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+} 
+.name_jobTitle_content input,
+.name_jobTitle_content textarea{
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    color: var(--white);
+    resize: none;
+    margin-bottom: 12px;
+  
+}
+.name_jobTitle_content input{
+    font-size: 1.3rem;
+}
+.name_jobTitle_content textarea{
+    font-size: 3rem;
+    height: 90px;
+    border-bottom: 3px solid var(--black);
+    font-weight: 800;
+}
+.contact_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}

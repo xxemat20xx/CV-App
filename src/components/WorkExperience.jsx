@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default function WorkExperience({workExpInfo, onChange}) {
   const handleWorkExpChange = (index, event) => {
     const {name, value} = event.target;
@@ -21,11 +22,22 @@ export default function WorkExperience({workExpInfo, onChange}) {
     onChange(updatedWorkExp);
   };
   return (
-    <div className='experience-container'>
+    <div className="">
       <h2>Work Experience</h2>
-      <div className="underline"></div>
+       
+   
         {workExpInfo.map((workExpInfo, index) => (
+           
             <div key={index} className="experience-entry">
+               <div className="design-content">
+            <div className='design diamond'></div>
+            <div className='design line'></div>
+            </div>
+                <div className="experience-buttons">
+                  <button onClick={() => handleRemoveExperienceBtn(index)}>&#10006;</button>
+                </div>
+
+                <div className="workExp-content">
                 <input type="text" 
                 name= "position"
                 value={workExpInfo.position}
@@ -59,13 +71,14 @@ export default function WorkExperience({workExpInfo, onChange}) {
                 onChange={(e) => handleWorkExpChange(index, e)}
                 placeholder="Job Description.."
                 />
-                  <div className="experience-buttons">
-                  <button onClick={() => handleRemoveExperienceBtn(index)}>&#10006;</button>
-                  </div>
 
+
+                </div>
             </div>
         ))}
+        <div className="workExp_buttons">
         <button onClick={handleAddExperienceBtn}>&#10010; Experience</button>
+        </div>
     </div>
   )
 }

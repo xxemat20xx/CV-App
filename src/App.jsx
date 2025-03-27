@@ -12,7 +12,8 @@ function App() {
     name: "Johny Jon Doe Jr. ",
     address: "Manila, Philippines",
     email: "johndavedoe@gmail.com",
-    contact: "09091234569",
+    phone: "09091234569",
+    jobTitle: "Web Developer",
   });
 
   const handlePersonalInfoChange = (updatedInfo) => {
@@ -52,21 +53,21 @@ function App() {
     }
   return (
     <>
-      <div className='cv-form'> 
-            <div className='container'>
-            <div className="sidepanel-content">
+      <section className='cv-form'> 
+        <div className="container">
             <PersonalDetails personalInfo={personalInfo} onChange={handlePersonalInfoChange} />
-            <Summary value={summary} onChange={setSummary} />
-            </div>
-            
-            <div className='rightpanel-content'>
-            <Education educationInfo={educationInfo} onChange={handleEducationChange}/>
+            <div className="bottom-content">
+            <Summary />
             <WorkExperience workExpInfo={workExpInfo} onChange={handleWorkExpChange}/>
+            <Education educationInfo={educationInfo} onChange={handleEducationChange}/>
             <Skills value={skill} onChange={setSkill}/>
-            <button onClick={previewCV}>Preview</button>
+         
             </div>
-            </div>
-          {isPreviewOpen && (
+        </div>
+          
+            {/* <button onClick={previewCV}>Preview</button> */}
+    
+          {/* {isPreviewOpen && (
             <PreviewCV onClose={() => setIsPreviewOpen(false)}>
                 <div className="container">
                     <div className="sidepanel-content">
@@ -130,9 +131,13 @@ function App() {
                 </div>
                
             </PreviewCV>
-          )}
+          )} */}
+    </section>
+    <div className="navbar_buttons">
+        <button>Preview</button>
+        <button>Clear</button>
+        <button>Genarate</button>
     </div>
-
     </>
   )
 }
