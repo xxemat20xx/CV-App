@@ -45,7 +45,7 @@ export default function WorkExperience({workExpInfo, onChange}) {
                   <button onClick={() => handleRemoveExperienceBtn(index)}>&#10006;</button>
                 </div>
 
-                <div className="workExp-content">
+                <div className={styles.workExpContent}>
                 <input type="text" 
                 name= "position"
                 value={workExpInfo.position}
@@ -58,22 +58,25 @@ export default function WorkExperience({workExpInfo, onChange}) {
                 onChange={(e) => handleWorkExpChange(index, e)}
                 placeholder='Company Inc.'/>
 
-                <label htmlFor={`startYear-${index}`}>Start Date:</label>
-                <input type="date"
+                <input type="number"
                  id={`startYear-${index}`}
                 name= "startYear"
+                min="1900"
+                placeholder="Start year"
                 value={workExpInfo.startYear}
                 onChange={(e) => handleWorkExpChange(index, e)}
                 />
-
-                <label htmlFor={`endYear-${index}`}>Start Date:</label>
-                <input type="date" 
+                <span><strong>-</strong></span>
+                <input type="number" 
                 name= "endYear"
                 id={`endYear-${index}`}
+                min="1900"
+                placeholder="End Year"
                 value={workExpInfo.endYear}
                 onChange={(e) => handleWorkExpChange(index, e)}
                 />
-                <textarea 
+                <textarea
+                className={styles.workExpTextarea}
                 name="jobDescription"
                 value={workExpInfo.jobDescription}
                 onChange={(e) => handleWorkExpChange(index, e)}

@@ -23,16 +23,17 @@ body{
   background-repeat: no-repeat;
   
 }
-body::before{
+body::before {
   content: '';
-  position: absolute;
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.712);
-  z-index: -9999;
+  z-index: -1; 
 }
+
 .bottom-content{
   display: grid;
   grid-template-columns: 1fr 50px 1fr;
@@ -56,7 +57,7 @@ body::before{
   margin-right: 12px;
 }
 .design.line{
-  height: 90px;
+  height: 175px;
   width: 2px;
   background-color: var(--black);
 }
@@ -78,6 +79,26 @@ body::before{
 button{
   border: none;
   background-color: var(--green);
-  color: var(--white);
+  color: var(--black);
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+ 
+}
+button:hover{
+  background-color: var(--skyblue);
+}
+.navbar_buttons{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  top: 50%;
+  left: -10%;
+}
+.navbar_buttons button{
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  border-radius: 50%;
+
 }

@@ -24,3 +24,24 @@
     width: 150px;
     height: 2px;
 }
+
+.skillContent input{
+    margin: 10px 12px 10px 0;
+   
+}
+.skillContent button{
+    background-color: red;
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+}
+.skillContent button:hover{
+    background-color: rgb(107, 6, 6);
+}
+.addSkill{
+    margin-right: 25px;
+    margin-top: 12px;
+    float: right;
+}

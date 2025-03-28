@@ -38,8 +38,8 @@ export default function Education({educationInfo, onChange}) {
             <h2>School</h2>
             <div></div>
             {educationInfo.map((educationInfo, index) => (
-                <div key={index} className="">
-                    <div className="">
+                <div key={index} className={styles.educationEntry}>
+                    <div className={styles.eduBtn}>
                         <button className="" onClick={() => handleRemoveEducationBtn(index)}>&#10006;</button>
                     </div>     
                     
@@ -62,26 +62,29 @@ export default function Education({educationInfo, onChange}) {
 
                     </div>
                     
-                    <label htmlFor={`startYear-${index}`}>Start:</label>
+                   
                     <input
-                        type="date"
+                        type="number"
                         id={`startYear-${index}`}
                         name="startYear"
+                        min="1900"
+                        placeholder="Start Year"
                         value={educationInfo.startYear}
                         onChange={(e) => handleEducationChange(index, e)}
                     />
-
-                    <label htmlFor={`endYear-${index}`}>End:</label>
+                     <span><strong>-</strong></span>
                     <input
-                        type="date"
+                        type="number"
                         id={`endYear-${index}`}
                         name="endYear"
+                        min="1900"
+                        placeholder="End Year"
                         value={educationInfo.endYear}
                         onChange={(e) => handleEducationChange(index, e)}
                     />
                 </div>
             ))}
-                <div className="">
+                <div className={styles.addBtn}>
                 <button onClick={handleAddSchoolBtn}>&#10010; School</button>
                 </div>
         

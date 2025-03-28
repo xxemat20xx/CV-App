@@ -5,15 +5,16 @@ import PersonalDetails from './components/PersonalDetails'
 import WorkExperience from './components/WorkExperience';
 import Skills from './components/Skills';
 import PreviewCV from './components/PreviewCV';
-import boxicons from 'boxicons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faArrowsRotate, faUser  } from "@fortawesome/free-solid-svg-icons";
 function App() {
   // Handle Personal Info state
   const [personalInfo, setPersonalInfo] = useState({
-    name: "Johny Jon Doe Jr. ",
-    address: "Manila, Philippines",
-    email: "johndavedoe@gmail.com",
-    phone: "09091234569",
-    jobTitle: "Web Developer",
+    name: "",
+    address: "",
+    email: "",
+    phone: "",
+    jobTitle: "",
   });
 
   const handlePersonalInfoChange = (updatedInfo) => {
@@ -22,15 +23,15 @@ function App() {
   };
   // Handle Summary State
   const [summary, setSummary] = 
-  useState("Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum architecto autem quas ipsa voluptas aperiam quis blanditiis enim. Mollitia nesciunt praesentium recusandae corporis est? Veritatis necessitatibus labore eos asperiores a.");
+  useState("");
   
   // Handle education
   const [educationInfo, setEducationInfo] = useState([
     {
-    school: "Manila University",
-    degree: "Information Tech.",
-    startYear: "2021-03-03",
-    endYear: "2025-03-03",
+    school: "",
+    degree: "",
+    startYear: "",
+    endYear: "",
     }
     ]);
     const handleEducationChange = (updatedEducation) => {
@@ -38,7 +39,7 @@ function App() {
     }
     // Handle Work Experience
     const [workExpInfo, setWorkExpInfo] = useState([
-      {position: "Web Developer", workplace: "Manila Data Corp.", startYear: "2021-05-05", endYear: "2025-06-06", jobDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum architecto autem quas ipsa voluptas aperiam quis blanditiis enim. Mollitia nesciunt praesentium recusandae corporis est? Veritatis necessitatibus labore eos asperiores a."}
+      {position: "", workplace: "", startYear: "", endYear:"", jobDescription: ""}
       ]);
     const handleWorkExpChange = (updatedWork) => {
       setWorkExpInfo(updatedWork);
@@ -50,6 +51,80 @@ function App() {
     const [isPreviewOpen, setIsPreviewOpen] = useState(false)
     const previewCV = () => {
       setIsPreviewOpen(true);
+    }
+    const generateUser = () => {
+      const generatePersonalDetails = {
+        name: "John Doe",
+        address: "123 Main St, New York, NY",
+        email: "johndoe@example.com",
+        phone: "+1 555-1234",
+        jobTitle: "Software Engineer",
+      }
+      setPersonalInfo(generatePersonalDetails)
+      // generate about me
+      const generateAboutMe = 
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam esse expedita, aut consequuntur, voluptate saepe rem placeat dolorem ipsam modi adipisci, nisi ea veritatis accusantium. Excepturi ipsam quaerat ad fugiat!";
+      setSummary(generateAboutMe)
+
+      // generate school
+      const generateSchool = [{
+        school: "Manila University",
+        degree: "Computer Engineer",
+        startYear: "2021",
+        endYear: "2025",
+      }];
+      setEducationInfo(generateSchool)
+      
+      // generate skill
+      const generateSkill = ["HTML", "CSS", "Javascript", "Webpack", "Graphic Design"];
+      setSkill(generateSkill)
+      
+      // genereta workexperience
+      const generateWork = [
+        {position: "Software Engineer", 
+        workplace: "Metro Manila", 
+        startYear: "2022", 
+        endYear:"2025", 
+        jobDescription: "Lorem ipsum blablabla Lorem ipsum blablablaLorem ipsum blablablaLorem ipsum blablablaLorem ipsum blablablaLorem ipsum blablabla"
+        },
+        {position: "Software Engineer", 
+          workplace: "Manila Corporation", 
+          startYear: "2022", 
+          endYear:"2025", 
+          jobDescription: "Lorem ipsum blablabla Lorem ipsum blablablaLorem ipsum blablablaLorem ipsum blablablaLorem ipsum blablablaLorem ipsum blablabla"
+          },
+          {position: "Web Developer", 
+            workplace: "Makati Corporation", 
+            startYear: "2019", 
+            endYear:"2022", 
+            jobDescription: "Lorem ipsum blablabla Lorem ipsum blablablaLorem ipsum blablablaLorem ipsum blablablaLorem ipsum blablablaLorem ipsum blablabla"
+            }
+        ];
+        setWorkExpInfo(generateWork);
+    }
+    const clearBtn = () => {
+        setPersonalInfo({
+          name: "",
+          address: "",
+          email: "",
+          phone: "",
+          jobTitle: "",
+        });
+        setSummary("");
+        setEducationInfo([{
+          school: "",
+          degree: "",
+          startYear: "",
+          endYear: "",
+        }]);
+        setWorkExpInfo([{
+          position: "", 
+          workplace: "", 
+          startYear: "", 
+          endYear:"", 
+          jobDescription: ""
+        }]);
+        setSkill([""]);
     }
   return (
     <>
@@ -138,12 +213,13 @@ function App() {
                
             </PreviewCV>
           )} */}
+                <div className="navbar_buttons">
+              <button><FontAwesomeIcon icon={faEye} /></button>
+              <button onClick={clearBtn}><FontAwesomeIcon icon={faArrowsRotate} /></button>
+              <button onClick={generateUser}><FontAwesomeIcon icon={faUser} /></button>
+          </div>
     </section>
-    <div className="navbar_buttons">
-        <button>Preview</button>
-        <button>Clear</button>
-        <button>Genarate</button>
-    </div>
+    
     </>
   )
 }

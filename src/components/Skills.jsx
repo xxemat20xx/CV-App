@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from '../modules/skill.module.css'
+
 export default function Skills({value, onChange}) {
   const handleAddSkillBtn = () => {
     onChange([...value, ""]);
@@ -24,15 +25,15 @@ export default function Skills({value, onChange}) {
                           </div>
         <h2>Skills</h2>
         {value.map((skill, index) => (
-            <div key={index}>
+            <div key={index} className={styles.skillContent}>
                 <input type="text" 
                 placeholder='e.g., Communcation'
                 value={skill}
                 onChange={(e) => handleSkillChange(index, e)}/>
-                <button onClick={() => handleRemoveSkill(index)}>Remove</button>
+                <button onClick={() => handleRemoveSkill(index)}>&#10006;</button>
             </div>
         ))}
-        <button onClick={handleAddSkillBtn}>&#10010; Skill</button>
+        <button onClick={handleAddSkillBtn} className={styles.addSkill}>&#10010; Skill</button>
     </div>
   )
 }
