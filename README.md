@@ -1,1 +1,2 @@
-# Still learning Odin React Lesson
+# Still learning React js
+
