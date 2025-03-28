@@ -1,5 +1,5 @@
 import React from 'react'
-
+import styles from '../modules/workExp.module.css'
 
 export default function WorkExperience({workExpInfo, onChange}) {
   const handleWorkExpChange = (index, event) => {
@@ -22,7 +22,14 @@ export default function WorkExperience({workExpInfo, onChange}) {
     onChange(updatedWorkExp);
   };
   return (
-    <div className="">
+    <div className={styles.workExp_container}>
+       <div className={styles.workExp_design}>
+                                  <div className={styles.smBox}></div>
+                                  <div className={styles.lgBox}></div>
+                                  <div className={styles.smBox}></div>
+                                  <div className={styles.lineDes}></div>
+                             
+                          </div>
       <h2>Work Experience</h2>
        
    
@@ -32,6 +39,7 @@ export default function WorkExperience({workExpInfo, onChange}) {
             <div className="design-content">
             <div className='design diamond'></div>
             <div className='design line'></div>
+            
             </div>
                 <div className="experience-buttons">
                   <button onClick={() => handleRemoveExperienceBtn(index)}>&#10006;</button>
@@ -76,7 +84,7 @@ export default function WorkExperience({workExpInfo, onChange}) {
                 </div>
             </div>
         ))}
-        <div className="workExp_buttons">
+        <div className={styles.workExp_buttons}>
         <button onClick={handleAddExperienceBtn}>&#10010; Experience</button>
         </div>
     </div>

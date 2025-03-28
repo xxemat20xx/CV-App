@@ -58,10 +58,11 @@ function App() {
             <PersonalDetails personalInfo={personalInfo} onChange={handlePersonalInfoChange} />
             <div className="bottom-content">
                 <div className="left-panel">
-                <Summary />
+                <Summary value={summary} onChange={setSummary}/>
                 <Education educationInfo={educationInfo} onChange={handleEducationChange}/>
                 <Skills value={skill} onChange={setSkill}/>
                 </div>
+                <div className="line-divider"></div>
                 <div className="right-panel">
                 <WorkExperience workExpInfo={workExpInfo} onChange={handleWorkExpChange}/>
              

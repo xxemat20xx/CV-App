@@ -1,21 +1,7 @@
-:root{
-    --grey:  #323232;
-    --white: #EFEFEF;
-    --green: #0D7377;
-    --skyblue: #14FFEC;
-    --black: #212121;
-  }
-.summary_container{
-    width: 100%;
+.skills_container{
     margin: 2em 0;
 }
-.summary_container textarea{
-    border: none;
-    resize: none;
-    width: 100%;
-    height: 120px;
-}
-.summary_design{
+.skill_design{
     display: flex;
     align-items: center;
     justify-content: baseline;

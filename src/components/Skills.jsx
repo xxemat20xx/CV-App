@@ -1,5 +1,5 @@
 import React from 'react'
-
+import styles from '../modules/skill.module.css'
 export default function Skills({value, onChange}) {
   const handleAddSkillBtn = () => {
     onChange([...value, ""]);
@@ -14,9 +14,15 @@ export default function Skills({value, onChange}) {
         onChange(updatedSkill)
   }
   return (
-    <div className='skills-container'>
+    <div className={styles.skills_container}>
+       <div className={styles.skill_design}>
+                                  <div className={styles.smBox}></div>
+                                  <div className={styles.lgBox}></div>
+                                  <div className={styles.smBox}></div>
+                                  <div className={styles.lineDes}></div>
+                             
+                          </div>
         <h2>Skills</h2>
-        <div className="underline"></div>
         {value.map((skill, index) => (
             <div key={index}>
                 <input type="text" 

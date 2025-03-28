@@ -15,12 +15,18 @@ export default function PersonalDetails({ personalInfo, onChange }) {
         <div className={styles.name_jobTitle}>
             <div className={styles.name_jobTitle_content}>
 
-                  
                   <textarea 
                       name='name'
                       value={personalInfo.name}
                       onChange={handleOnChange}
                   />
+                  <div className={styles.personalInfo_lineDesign}>
+                        <div className={styles.lineDesign_}></div>
+                        <div className={styles.boxShape_}></div>
+                        <div className={styles.boxShape_lg}></div>
+                        <div className={styles.boxShape_}></div>
+                        <div className={styles.lineDesign_}></div>
+                  </div>
                   <input type="text" 
                           name='jobTitle'
                           value={personalInfo.jobTitle}
@@ -43,7 +49,7 @@ export default function PersonalDetails({ personalInfo, onChange }) {
                           onChange={handleOnChange}
                           placeholder='Enter your email'/>
 
-                  <box-icon type='solid' name='phone' color="#14FFEC"></box-icon>
+                  <box-icon name='phone' type='solid' color='#14ffec' ></box-icon>
                   <input type="text" 
                           name='phone'
                           value={personalInfo.phone}

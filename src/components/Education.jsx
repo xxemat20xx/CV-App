@@ -1,5 +1,5 @@
 import React from 'react'
-
+import styles from '../modules/edu.module.css'
 export default function Education({educationInfo, onChange}) {
     const handleEducationChange = (index, event) =>{
    
@@ -27,7 +27,14 @@ export default function Education({educationInfo, onChange}) {
         onChange(updatedEducation);
       };
     return (
-        <div className="">
+        <div className={styles.eduContainer}>
+                    <div className={styles.edu_design}>
+                            <div className={styles.smBox}></div>
+                            <div className={styles.lgBox}></div>
+                            <div className={styles.smBox}></div>
+                            <div className={styles.lineDes}></div>
+                       
+                    </div>
             <h2>School</h2>
             <div></div>
             {educationInfo.map((educationInfo, index) => (
