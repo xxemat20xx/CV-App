@@ -214,9 +214,9 @@ function App() {
             </PreviewCV>
           )} */}
                 <div className="navbar_buttons">
-              <button><FontAwesomeIcon icon={faEye} /></button>
-              <button onClick={clearBtn}><FontAwesomeIcon icon={faArrowsRotate} /></button>
-              <button onClick={generateUser}><FontAwesomeIcon icon={faUser} /></button>
+              <button className='icon' data-tooltip="View"><FontAwesomeIcon icon={faEye} /></button>
+              <button onClick={clearBtn} data-tooltip="Clear" className='icon'><FontAwesomeIcon icon={faArrowsRotate} /></button>
+              <button onClick={generateUser} data-tooltip="Generate User" className='icon'><FontAwesomeIcon icon={faUser} /></button>
           </div>
     </section>
     
