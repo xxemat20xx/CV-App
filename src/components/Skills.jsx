@@ -28,6 +28,7 @@ export default function Skills({value, onChange}) {
             <div key={index} className={styles.skillContent}>
                 <input type="text" 
                 placeholder='e.g., Communcation'
+                id={`skills-${index}`}
                 value={skill}
                 onChange={(e) => handleSkillChange(index, e)}/>
                 <button onClick={() => handleRemoveSkill(index)}>&#10006;</button>

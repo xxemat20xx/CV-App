@@ -1,12 +1,15 @@
-import { use, useState } from 'react';
+import { useState, useRef } from 'react';
 import Summary from './components/Summary';
 import Education from './components/Education';
 import PersonalDetails from './components/PersonalDetails'
 import WorkExperience from './components/WorkExperience';
 import Skills from './components/Skills';
 import PreviewCV from './components/PreviewCV';
+import styles from '../src/modules/preview.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faArrowsRotate, faUser  } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faArrowsRotate, faUser, faArrowDown  } from "@fortawesome/free-solid-svg-icons";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 function App() {
   // Handle Personal Info state
   const [personalInfo, setPersonalInfo] = useState({
@@ -102,6 +105,7 @@ function App() {
         ];
         setWorkExpInfo(generateWork);
     }
+    // CLEAR INPUT VALUE
     const clearBtn = () => {
         setPersonalInfo({
           name: "",
@@ -126,6 +130,37 @@ function App() {
         }]);
         setSkill([""]);
     }
+    // DOWNLOAD as PDF
+    const previewRef = useRef();
+    const downloadBtn = async () => {
+      setIsPreviewOpen(true); // Ensure modal is open
+      setTimeout(async () => {
+        if (!previewRef.current) {
+          console.error("previewRef is null");
+          return;
+        }
+    
+        try {
+          const canvas = await html2canvas(previewRef.current, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: "#fff",
+          });
+    
+          const imgData = canvas.toDataURL('image/png');
+          const pdf = new jsPDF('p', 'mm', 'a4');
+          const imgWidth = 210;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    
+          pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+          pdf.save('resume.pdf');
+        } catch (error) {
+          console.error('Error generating PDF:', error);
+        }
+      }, 500); // Give time for modal to render
+    };
+    
   return (
     <>
       <section className='cv-form'> 
@@ -146,75 +181,110 @@ function App() {
             </div>
         </div>
           
-            {/* <button onClick={previewCV}>Preview</button> */}
+        
     
-          {/* {isPreviewOpen && (
-            <PreviewCV onClose={() => setIsPreviewOpen(false)}>
-                <div className="container">
-                    <div className="sidepanel-content">
-                        <div className="personal-info">
-                        <h1 id='personalInfo-name'>{personalInfo.name}</h1>
-                        <div className="underline"></div>
-                        <div className="other-personal-info">
-                            <div className="input-content">
-                            <box-icon type='solid' name='location-plus' color='#3F7D58'></box-icon>
-                            <span>{personalInfo.address}</span>
-                            </div>
-                            <div className="input-content">
-                            <box-icon name='envelope' type='solid' color='#3F7D58' ></box-icon>
-                            <span>{personalInfo.email}</span>
-                            </div>
-                            <div className="input-content">
-                            <box-icon name='phone-call' type='solid' color='#3F7D58'></box-icon>
-                            <span>{personalInfo.contact}</span>
-                            </div>
-                        </div>
-                        </div>
-                        <div className="summary-container">
-                        <h2>About Me</h2>
-                        <div className="underline"></div>
-                        <p>{summary}</p>
-                    </div>
-                    </div>
+          {isPreviewOpen && (
+           <PreviewCV onClose={() => setIsPreviewOpen(false)} previewRef={previewRef}>
 
-                    <div className="rightpanel-content">
-                        <h2>Education</h2>
-                        <div className="underline"></div>
-                        {educationInfo.map((edu,index) => (
-                          <div key={index} className='education-container'>
-                              <div>
-                                  <p id='degree'>{edu.degree}</p>
-                                  <p>{edu.school}</p>
-                                  <h4>Start Year:</h4>
-                                  <p>{edu.startYear}</p>
-                                  <h4>End Year:</h4>
-                                  <p>{edu.endYear}</p>
+                <section className={styles.personal_container}>
+                    <h1>{personalInfo.name}</h1>
+                          <div className={styles.personalInfo_lineDesign}>
+                                <div className={styles.lineDesign_}></div>
+                                <div className={styles.boxShape_}></div>
+                                <div className={styles.boxShape_lg}></div>
+                                <div className={styles.boxShape_}></div>
+                                <div className={styles.lineDesign_}></div>
+                          </div>
+                          <span>{personalInfo.jobTitle}</span>
+                          <div className={styles.preview_contactInfo}>
+                            <box-icon type='solid' name='location-plus' color="#14FFEC"></box-icon>
+                            <p>{personalInfo.address}</p>
+
+                            <box-icon type='solid' name='envelope' color="#14FFEC"></box-icon>
+                            <p>{personalInfo.email}</p>
+
+                            <box-icon name='phone' type='solid' color='#14ffec' ></box-icon>
+                            <p>{personalInfo.phone}</p>
+                          </div>
+                </section>
+                <section className={styles.bottom_content}>
+                      <div className={styles.leftPanel}>
+                                <div className={styles.panel_design}>
+                                        <div className={styles.smBox}></div>
+                                        <div className={styles.lgBox}></div>
+                                        <div className={styles.smBox}></div>
+                                        <div className={styles.lineDes}></div>
+                                </div>
+                                <div className="previewAboutMe">
+                                      <h2>About Me</h2>
+                                      <p>{summary}</p>
+                                </div>
+                                <div className="previewSchool">
+                                <div className={styles.panel_design}>
+                                        <div className={styles.smBox}></div>
+                                        <div className={styles.lgBox}></div>
+                                        <div className={styles.smBox}></div>
+                                        <div className={styles.lineDes}></div>
+                                </div>
+                                  <h2>School</h2>
+                                    {educationInfo.map((edu,index) => (
+                                      <div key={index}>
+                                          <p><strong>{edu.school}</strong></p>
+                                          <span>{edu.degree}</span>
+                                          <p><strong>{edu.startYear}<span>-</span>{edu.endYear}</strong></p>
+                                      </div>
+                                    ))}
+                                </div>
+                                <div className="previewSkill">
+                                <div className={styles.panel_design}>
+                                        <div className={styles.smBox}></div>
+                                        <div className={styles.lgBox}></div>
+                                        <div className={styles.smBox}></div>
+                                        <div className={styles.lineDes}></div>
+                                </div>
+                                  <h2>Skill</h2>
+                                  {skill.map((skill, index) => (
+                                    <div key={index}>
+                                        <ul>
+                                            <li key={index}>{skill}</li>
+                                        </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                      </div>
+                      <div className={styles.lineDivider}></div>
+                      <div className={styles.rightPanel}>
+                              <div className="previewWorkExp">
+                              <div className={styles.panel_design}>
+                                        <div className={styles.smBox}></div>
+                                        <div className={styles.lgBox}></div>
+                                        <div className={styles.smBox}></div>
+                                        <div className={styles.lineDes}></div>
+                                </div>
+                                <h3>Work Experience</h3>
+                                {workExpInfo.map((workExp, index) => (
+                                  <div key={index} className='experience-entry'>
+                                        <div className="design-content">
+                                            <div className='design diamond'></div>
+                                            <div className='design line'></div>
+                                         </div>
+                                         <div className="workExpContent">
+                                            <h3><strong>{workExp.position}</strong></h3>
+                                            <p>{workExp.workplace}</p>
+                                            <p><strong>{workExp.startYear} - {workExp.endYear}</strong></p>
+                                            <p>{workExp.jobDescription}</p>
+                                         </div>
+                                  </div>
+                                ))}
                               </div>
-                          </div>
-                        ))}
-                  
-                        {workExpInfo.map((workExp, index) => (
-                         
-                          <div key={index} className='experience-container'>
-                                  <h2>Work Experience</h2>
-                                  <div className="underline"></div>
-                                <p id='jobPosition'>{workExp.position}</p>
-                                <p>{workExp.workplace}</p>
-                                <h4>Start Date:</h4>
-                                <p>{workExp.startYear}</p>
-                                <h4>End Date:</h4>
-                                <p>{workExp.endYear}</p>
-                                <h4>Job Description</h4>
-                                <p>{workExp.jobDescription}</p>
-                          </div>
-                        ))}
-                    </div>
-                </div>
-               
+                      </div>
+                </section>
+      
             </PreviewCV>
-          )} */}
-                <div className="navbar_buttons">
-              <button className='icon' data-tooltip="View"><FontAwesomeIcon icon={faEye} /></button>
+          )}
+              <div className="navbar_buttons">
+              <button onClick={downloadBtn} className='icon' data-tooltip="Download"><FontAwesomeIcon icon={faArrowDown} /></button>
+              <button onClick={previewCV} className='icon' data-tooltip="View"><FontAwesomeIcon icon={faEye} /></button>
               <button onClick={clearBtn} data-tooltip="Clear" className='icon'><FontAwesomeIcon icon={faArrowsRotate} /></button>
               <button onClick={generateUser} data-tooltip="Generate User" className='icon'><FontAwesomeIcon icon={faUser} /></button>
           </div>

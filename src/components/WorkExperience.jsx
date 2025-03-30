@@ -29,7 +29,7 @@ export default function WorkExperience({workExpInfo, onChange}) {
                                   <div className={styles.smBox}></div>
                                   <div className={styles.lineDes}></div>
                              
-                          </div>
+      </div>
       <h2>Work Experience</h2>
        
    
@@ -37,11 +37,10 @@ export default function WorkExperience({workExpInfo, onChange}) {
            
             <div key={index} className="experience-entry">
             <div className="design-content">
-            <div className='design diamond'></div>
-            <div className='design line'></div>
-            
+                <div className='design diamond'></div>
+                <div className='design line'></div>
             </div>
-                <div className="experience-buttons">
+                <div className={styles.cancelBtn}>
                   <button onClick={() => handleRemoveExperienceBtn(index)}>&#10006;</button>
                 </div>
 
@@ -59,7 +58,7 @@ export default function WorkExperience({workExpInfo, onChange}) {
                 placeholder='Company Inc.'/>
 
                 <input type="number"
-                 id={`startYear-${index}`}
+                 id={`workExpStartYear-${index}`}
                 name= "startYear"
                 min="1900"
                 placeholder="Start year"
@@ -69,7 +68,7 @@ export default function WorkExperience({workExpInfo, onChange}) {
                 <span><strong>-</strong></span>
                 <input type="number" 
                 name= "endYear"
-                id={`endYear-${index}`}
+                id={`worExpEndYear-${index}`}
                 min="1900"
                 placeholder="End Year"
                 value={workExpInfo.endYear}
@@ -78,6 +77,7 @@ export default function WorkExperience({workExpInfo, onChange}) {
                 <textarea
                 className={styles.workExpTextarea}
                 name="jobDescription"
+                id={`jobDescription-${index}`}
                 value={workExpInfo.jobDescription}
                 onChange={(e) => handleWorkExpChange(index, e)}
                 placeholder="Job Description.."

@@ -1,11 +1,11 @@
 import React from 'react'
-
-export default function PreviewCV({onClose, children}) {
+import styles from '../modules/preview.module.css'
+export default function PreviewCV({onClose, children, previewRef }) {
   return (
-    <div className="preview-overlay">
-        <div className="cv-form previewCV-content">
+    <div className={styles.previewCV_overlay}>
+        <div className={styles.previewCV_content} ref={previewRef}>
             {children}
-            <button onClick={onClose} className='btn close-btn'>Close</button>
+            <button onClick={onClose} className='btn close-btn'>&#10006;</button>
         </div>
     </div>
   )

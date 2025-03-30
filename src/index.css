@@ -40,12 +40,16 @@ body::before {
   justify-items: center;
 }
 .cv-form{
-  width: 900px;
+  width: 980px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--white);
+}
+.left-panel,
+.right-panel{
+  width: 400px;
 }
 .container{
   padding: 1em;
@@ -57,7 +61,7 @@ body::before {
   margin-right: 12px;
 }
 .design.line{
-  height: 175px;
+  height: 210px;
   width: 2px;
   background-color: var(--black);
 }
@@ -101,6 +105,11 @@ button:hover{
   font-size: 18px;
   border-radius: 50%;
 
+}
+input,
+textarea{
+  border: none;
+  border-bottom: 1px solid var(--black);
 }
 .icon {
   position: relative;

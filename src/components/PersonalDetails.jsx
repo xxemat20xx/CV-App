@@ -18,6 +18,7 @@ export default function PersonalDetails({ personalInfo, onChange }) {
                   <textarea 
                       name='name'
                       placeholder='Enter your name'
+                      id='name'
                       value={personalInfo.name}
                       onChange={handleOnChange}
                   />

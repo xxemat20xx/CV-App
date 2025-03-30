@@ -11,7 +11,8 @@ export default function Summary({value, onChange}) {
            
         </div>
         <h2>About me</h2>
-        <textarea 
+        <textarea
+            id='about' 
             placeholder='Write something about yourself...'
             value={value}
             onChange={(event) => onChange(event.target.value)}

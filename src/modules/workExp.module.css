@@ -1,5 +1,9 @@
 .workExp_container{
     margin: 2em 0;
+    
+}
+.workExpContent{
+    width: 100%;
 }
 .workExp_design{
     display: flex;
@@ -24,31 +28,49 @@
     width: 150px;
     height: 2px;
 }
+
+.workExpTextarea{
+    height: 90px;
+    width: 100%;
+    resize: none;
+}
+.workExpContent input{
+    margin: 4px 0;
+}
+.workExpContent input:first-child{
+    width: 90%;
+    font-weight: 800;
+}
+.workExpContent input:nth-child(2){
+    width: 90%;
+}
+.workExpContent input:nth-child(3),
+.workExpContent input:nth-child(5){
+    width: 45%;
+}
 .workExp_buttons{
     text-align: right;
 }
-.workExpTextarea{
-    height: 90px;
-    width: 340px;
-    resize: none;
-}
 .workExp_buttons button{
-    margin-right: 25px;
-    margin-top: 12px;
+    padding: 8px;
+    margin: 12px 0;
 }
-.workExpContent input{
-    margin: 4px;
+.cancelBtn{
+    position: absolute;
+    right: 2.5rem;
+    
 }
-.workExpContent input:first-child{
-    font-weight: 800;
+.cancelBtn button{
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: #fff;
 }
-.workExpContent input:first-child,
-.workExpContent input:nth-child(2){
-    width: 95%;
-}
-.workExpContent input:nth-child(3){
-    width: 30%;
-}
-.workExpContent input:nth-child(4){
-    width: 30%;
+.cancelBtn button:hover{
+    background-color: rgb(119, 3, 3);
 }

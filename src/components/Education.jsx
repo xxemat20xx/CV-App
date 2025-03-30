@@ -65,7 +65,7 @@ export default function Education({educationInfo, onChange}) {
                    
                     <input
                         type="number"
-                        id={`startYear-${index}`}
+                        id={`eduStartYr-${index}`}
                         name="startYear"
                         min="1900"
                         placeholder="Start Year"
@@ -75,7 +75,7 @@ export default function Education({educationInfo, onChange}) {
                      <span><strong>-</strong></span>
                     <input
                         type="number"
-                        id={`endYear-${index}`}
+                        id={`eduEndYr-${index}`}
                         name="endYear"
                         min="1900"
                         placeholder="End Year"

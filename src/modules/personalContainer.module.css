@@ -5,6 +5,7 @@
     --skyblue: #14FFEC;
     --black: #212121;
   }
+
 .personal_container{
    background-color: var(--black);
     padding: 1.5em;
