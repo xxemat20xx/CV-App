@@ -4,7 +4,7 @@ This is my first React project, a CV (Resume) application, built as part of [The
 
 ## Live Preview
 
-[View Live Demo](#) 
+[View Live Demo](https://xxemat20xx.github.io/CV-App/) 
 
 ## Technologies Used
 - React.js
